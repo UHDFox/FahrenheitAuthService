@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\Web\Web.csproj", "{4D7612AC-79E5-4691-B433-0FEAC3DF6B74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{322A0C4A-E7D8-4B3F-A18E-46091F8E281D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "src\Business\Business.csproj", "{EEA12348-8CC0-4850-8D08-5BDD7DD04CF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0EC7B557-B1B5-458D-BCD5-F67D6316BB58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D7612AC-79E5-4691-B433-0FEAC3DF6B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D7612AC-79E5-4691-B433-0FEAC3DF6B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D7612AC-79E5-4691-B433-0FEAC3DF6B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D7612AC-79E5-4691-B433-0FEAC3DF6B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{322A0C4A-E7D8-4B3F-A18E-46091F8E281D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{322A0C4A-E7D8-4B3F-A18E-46091F8E281D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{322A0C4A-E7D8-4B3F-A18E-46091F8E281D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{322A0C4A-E7D8-4B3F-A18E-46091F8E281D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA12348-8CC0-4850-8D08-5BDD7DD04CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA12348-8CC0-4850-8D08-5BDD7DD04CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA12348-8CC0-4850-8D08-5BDD7DD04CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA12348-8CC0-4850-8D08-5BDD7DD04CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EEA12348-8CC0-4850-8D08-5BDD7DD04CF2} = {0EC7B557-B1B5-458D-BCD5-F67D6316BB58}
+		{322A0C4A-E7D8-4B3F-A18E-46091F8E281D} = {0EC7B557-B1B5-458D-BCD5-F67D6316BB58}
+		{4D7612AC-79E5-4691-B433-0FEAC3DF6B74} = {0EC7B557-B1B5-458D-BCD5-F67D6316BB58}
+	EndGlobalSection
+EndGlobal
