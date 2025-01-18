@@ -1,23 +1,25 @@
 using Domain.Enums;
 
-namespace Domain.Entities.Users;
+namespace Web.Contracts.User;
 
-public sealed class UserRecord : IDataObject, IUserFeedback
+public sealed class UpdateUserRequest
 {
-    public UserRecord(string name, string phoneNumber, string passwordHash, string email, UserRole role)
+    public UpdateUserRequest(string name, string phoneNumber, string password, string email, UserRole role)
     {
         Name = name;
         PhoneNumber = phoneNumber;
-        PasswordHash = passwordHash;
+        Password = password;
         Email = email;
         Role = role;
     }
+
+    public Guid Id { get; set; }
 
     public string Name { get; set; }
 
     public string PhoneNumber { get; set; }
 
-    public string PasswordHash { get; set; }
+    public string Password { get; set; }
 
     public string Email { get; set; }
 
