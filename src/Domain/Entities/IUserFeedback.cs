@@ -1,4 +1,4 @@
-namespace Domain.Domain.Entities;
+namespace Domain.Entities;
 
 public interface IUserFeedback
 {
