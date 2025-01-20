@@ -13,13 +13,20 @@ public class Repository<T> : IRepository<T> where T : IDataObject
         _context = context;
     }
 
-    public async Task<IReadOnlyCollection<T>> GetAllAsync(int offset, int limit) =>
-        await _context.Set<T>().Skip(offset).Take(limit).ToListAsync();
+    public async Task<IReadOnlyCollection<T>> GetAllAsync(int offset, int limit)
+    {
+        return await _context.Set<T>().Skip(offset).Take(limit).ToListAsync();
+    }
 
-    public async Task<int> GetTotalAmountAsync() => await _context.Set<T>().CountAsync();
+    public async Task<int> GetTotalAmountAsync()
+    {
+        return await _context.Set<T>().CountAsync();
+    }
 
-    public async Task<T?> GetByIdAsync(Guid id) =>
-        await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(record => record.Id == id);
+    public async Task<T?> GetByIdAsync(Guid id)
+    {
+        return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(record => record.Id == id);
+    }
 
     public async Task<Guid> AddAsync(T data)
     {
@@ -28,7 +35,10 @@ public class Repository<T> : IRepository<T> where T : IDataObject
         return data.Id;
     }
 
-    public void Update(T data) => _context.Set<T>().Update(data);
+    public void Update(T data)
+    {
+        _context.Set<T>().Update(data);
+    }
 
     public async Task<bool> DeleteAsync(Guid id)
     {
@@ -36,5 +46,8 @@ public class Repository<T> : IRepository<T> where T : IDataObject
         return await SaveChangesAsync() > 0;
     }
 
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _context.SaveChangesAsync();
+    }
 }

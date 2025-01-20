@@ -11,13 +11,13 @@ public sealed class JwtProvider : IJwtProvider
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Role, user.Role.ToString()), new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            new(ClaimTypes.Role, user.Role.ToString()), new(ClaimTypes.NameIdentifier, user.Id.ToString())
         };
 
         var jwt = new JwtSecurityToken(
-            issuer: AuthOptions.Issuer,
-            audience: AuthOptions.Audience,
-            claims: claims,
+            AuthOptions.Issuer,
+            AuthOptions.Audience,
+            claims,
             expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(2)),
             signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(),
                 SecurityAlgorithms.HmacSha256)

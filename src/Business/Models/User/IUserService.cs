@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace Business.Models.User;
 
@@ -7,7 +6,7 @@ public interface IUserService
 {
     public Task<string> LoginAsync(LoginModel model, HttpContext context);
     public Task<Guid> RegisterAsync(RegisterModel model);
-    
+
     public Task<IReadOnlyCollection<UserModel>> GetListAsync(int offset, int limit);
 
     public Task<Guid> AddAsync(UserModel userModel);

@@ -4,7 +4,7 @@ namespace Business.Models.User;
 
 public sealed class UserModel
 {
-    public UserModel(Guid id, string name, string password, string email, string phoneNumber, UserRole role) 
+    public UserModel(Guid id, string name, string password, string email, string phoneNumber, UserRole role)
     {
         Id = id;
         Name = name;
@@ -13,7 +13,7 @@ public sealed class UserModel
         PhoneNumber = phoneNumber;
         Role = role;
     }
-    
+
     public Guid Id { get; set; }
 
     public string Name { get; set; }

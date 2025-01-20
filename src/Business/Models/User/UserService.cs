@@ -10,11 +10,11 @@ namespace Business.Models.User;
 
 internal sealed class UserService : IUserService
 {
-    private readonly IMapper _mapper;
-    private readonly IUserRepository _repository;
     private readonly IJwtProvider _jwtProvider;
+    private readonly ILogger<UserService> _logger;
+    private readonly IMapper _mapper;
     private readonly IPasswordProvider _passwordProvider;
-    private ILogger<UserService> _logger;
+    private readonly IUserRepository _repository;
 
     public UserService(
         IMapper mapper,
@@ -37,7 +37,7 @@ internal sealed class UserService : IUserService
         entity.PasswordHash = _passwordProvider.Generate(userModel.Password);
 
         var result = await _repository.AddAsync(_mapper.Map<UserRecord>(entity));
-        
+
         _logger.LogInformation($"Created new user with id {result}");
 
         return result;
@@ -46,7 +46,7 @@ internal sealed class UserService : IUserService
     public async Task<string> LoginAsync(LoginModel model, HttpContext context)
     {
         var user = await _repository.GetByEmailAsync(model.Email);
-        
+
         if (user == null)
         {
             _logger.LogError($"User with email {model.Email} does not exist");
@@ -76,7 +76,7 @@ internal sealed class UserService : IUserService
     public async Task<Guid> RegisterAsync(RegisterModel model)
     {
         var result = await AddAsync(_mapper.Map<UserModel>(model));
-        
+
         _logger.LogInformation($"Registered new user with id {result}");
 
         return result;
@@ -95,9 +95,9 @@ internal sealed class UserService : IUserService
             _logger.LogError($"Record with id: {id} not found in {nameof(UserModel)}");
             throw new NotFoundException($"Record not found in {nameof(UserModel)}");
         }
-        
+
         _logger.LogInformation($"Retrieved record with id: {id} in {nameof(UserModel)}");
-        
+
         return _mapper.Map<UserModel>(record);
     }
 
@@ -114,7 +114,7 @@ internal sealed class UserService : IUserService
             }
 
             _mapper.Map(userModel, entity);
-            
+
             entity.PasswordHash = _passwordProvider.Generate(userModel.Password);
 
             _repository.Update(entity);
@@ -127,7 +127,8 @@ internal sealed class UserService : IUserService
         }
         catch (Exception ex)
         {
-            _logger.LogError($"An error occured while updating entity with id: {userModel.Id}, \n Message: {ex.Message}");
+            _logger.LogError(
+                $"An error occured while updating entity with id: {userModel.Id}, \n Message: {ex.Message}");
             throw;
         }
     }
@@ -146,12 +147,15 @@ internal sealed class UserService : IUserService
 
             return result;
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             _logger.LogError($"An error occurred while deleting record with Id: {id}, Message: {ex.Message}");
             return false;
         }
     }
 
-    public async Task<int> SaveChangesAsync() => await _repository.SaveChangesAsync();
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _repository.SaveChangesAsync();
+    }
 }

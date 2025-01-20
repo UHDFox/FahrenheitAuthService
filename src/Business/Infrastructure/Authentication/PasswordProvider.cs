@@ -21,7 +21,7 @@ public sealed class PasswordProvider : IPasswordProvider
     {
         using (var hasher = SHA256.Create())
         {
-            byte[] hashValue = hasher.ComputeHash(Encoding.UTF8.GetBytes(password));
+            var hashValue = hasher.ComputeHash(Encoding.UTF8.GetBytes(password));
 
 
             return BitConverter.ToString(hashValue).Replace("-", "").ToLowerInvariant();

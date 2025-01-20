@@ -11,7 +11,7 @@ public static class AuthenticationExtensions
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidIssuer = AuthOptions.Issuer,
@@ -25,10 +25,7 @@ public static class AuthenticationExtensions
                 {
                     OnMessageReceived = context =>
                     {
-                        if (context.Request.Cookies.TryGetValue("some-cookie", out var token))
-                        {
-                            context.Token = token;
-                        }
+                        if (context.Request.Cookies.TryGetValue("some-cookie", out var token)) context.Token = token;
 
                         return Task.CompletedTask;
                     }

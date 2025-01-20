@@ -1,6 +1,5 @@
 using AutoMapper;
 using Business.Models.User;
-using Domain.Entities.Users;
 using Domain.Enums;
 using Web.Contracts.User;
 using LoginRequest = Web.Contracts.User.LoginRequest;
@@ -43,9 +42,9 @@ public class WebProfile : Profile
                     src.Role
                 )).ReverseMap();
         CreateMap<LoginRequest, LoginModel>();
-        
+
         CreateMap<RegisterRequest, RegisterModel>();
-        
+
         CreateMap<RegisterModel, UserModel>()
             .ConstructUsing(src =>
                 new UserModel(

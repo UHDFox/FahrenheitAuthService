@@ -3,7 +3,6 @@ using Business.Models.User;
 using Domain.Entities.Users;
 using Domain.Enums;
 
-
 namespace Business.Infrastructure;
 
 public class ApplicationProfile : Profile
