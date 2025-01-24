@@ -101,6 +101,11 @@ internal sealed class UserService : IUserService
         return _mapper.Map<UserModel>(record);
     }
 
+    public async Task<UserModel> GetByEmailAsync(string email)
+    {
+        return _mapper.Map<UserModel>(await _repository.GetByEmailAsync(email));
+    }
+
     public async Task<UserModel> UpdateAsync(UserModel userModel)
     {
         try

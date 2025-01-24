@@ -71,6 +71,16 @@ public sealed class UserController : Controller
         return Ok(_mapper.Map<UserResponse>(await _userService.GetByIdAsync(id)));
     }
 
+    [HttpGet("email")]
+    [Authorize(Roles = "SuperAdmin, HighLevelAdmin, LowLevelAdmin, User")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserRecord))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetByEmailAsync(string email)
+    {
+        return Ok(await _userService.GetByEmailAsync(email));
+    }
+
+
     [HttpPost]
     [Authorize(Roles = "SuperAdmin, HighLevelAdmin, LowLevelAdmin")]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(CreatedResponse))]
