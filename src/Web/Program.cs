@@ -15,6 +15,7 @@ builder.Services.AddRepositories();
 builder.Services.AddBusinessServices();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+builder.Services.AddSerilog();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {

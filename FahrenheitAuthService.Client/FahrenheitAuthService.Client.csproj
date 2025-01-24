@@ -7,11 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2"/>
-    </ItemGroup>
 
-    <ItemGroup>
         <ProjectReference Include="..\src\Domain\Domain.csproj"/>
+        <ProjectReference Include="..\src\Web\Web.csproj"/>
+      
+      
     </ItemGroup>
 
+    <PropertyGroup>
+        <PackageId>FahrenheitAuthService.Client</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>HDFox</Authors>
+        <Description>HTTP Client for Auth Service</Description>
+    </PropertyGroup>
 </Project>
