@@ -8,10 +8,17 @@
 
     <ItemGroup>
 
-        <ProjectReference Include="..\src\Domain\Domain.csproj"/>
-        <ProjectReference Include="..\src\Web\Web.csproj"/>
+        <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Async" Version="2.1.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="6.0.0"/>
       
       
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\src\Contracts\Contracts.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

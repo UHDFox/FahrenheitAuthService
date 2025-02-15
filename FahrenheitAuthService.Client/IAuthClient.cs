@@ -1,6 +1,6 @@
-using Domain.Entities.Users;
-using Web.Contracts.CommonResponses;
-using Web.Contracts.User;
+
+using Contracts.Contracts.CommonResponses;
+using Contracts.Contracts.User;
 
 namespace FahrenheitAuthService.Client;
 

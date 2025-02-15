@@ -1,6 +1,6 @@
-using Domain.Enums;
+using Contracts.Enums;
 
-namespace Web.Contracts.User;
+namespace Contracts.Contracts.User;
 
 public sealed class UserResponse
 {

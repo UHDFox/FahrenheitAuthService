@@ -1,10 +1,10 @@
 using AutoMapper;
 using Business.Models.User;
+using Contracts.Contracts.CommonResponses;
+using Contracts.Contracts.User;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Web.Contracts.CommonResponses;
-using Web.Contracts.User;
 
 namespace Web.Controllers;
 
