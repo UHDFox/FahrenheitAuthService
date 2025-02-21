@@ -1,6 +1,8 @@
-using Domain.Enums;
 
-namespace Web.Contracts.User;
+
+using Contracts.Enums;
+
+namespace Contracts.Contracts.User;
 
 public sealed class UpdateUserRequest
 {

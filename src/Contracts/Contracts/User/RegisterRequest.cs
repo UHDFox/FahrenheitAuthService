@@ -1,16 +1,13 @@
-using Domain.Enums;
+﻿namespace Contracts.Contracts.User;
 
-namespace Web.Contracts.User;
-
-public sealed class CreateUserRequest
+public sealed class RegisterRequest
 {
-    public CreateUserRequest(string name, string password, string email, string phoneNumber, UserRole role)
+    public RegisterRequest(string name, string password, string email, string phoneNumber)
     {
         Name = name;
         Password = password;
         Email = email;
         PhoneNumber = phoneNumber;
-        Role = role;
     }
 
     public string Name { get; set; }
@@ -20,6 +17,4 @@ public sealed class CreateUserRequest
     public string Email { get; set; }
 
     public string PhoneNumber { get; set; }
-
-    public UserRole Role { get; set; }
 }

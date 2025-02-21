@@ -1,10 +1,10 @@
 using AutoMapper;
 using Business.Models.User;
+using Contracts.Contracts.CommonResponses;
+using Contracts.Contracts.User;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Web.Contracts.CommonResponses;
-using Web.Contracts.User;
 
 namespace Web.Controllers;
 
@@ -57,7 +57,7 @@ public sealed class UserController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error in GetListAsync");
+            _logger.LogError("Error in GetListAsync: {Message}", ex.Message);
             return StatusCode(500, "An error occurred while processing the request.");
         }
     }

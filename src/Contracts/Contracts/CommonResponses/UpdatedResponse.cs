@@ -1,4 +1,4 @@
-namespace Web.Contracts.CommonResponses;
+namespace Contracts.Contracts.CommonResponses;
 
 public class UpdatedResponse
 {

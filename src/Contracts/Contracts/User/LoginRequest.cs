@@ -1,4 +1,4 @@
-﻿namespace Web.Contracts.User;
+﻿namespace Contracts.Contracts.User;
 
 public sealed class LoginRequest
 {

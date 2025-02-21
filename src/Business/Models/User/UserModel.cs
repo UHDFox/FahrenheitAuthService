@@ -1,4 +1,4 @@
-using Domain.Enums;
+using Contracts.Enums;
 
 namespace Business.Models.User;
 

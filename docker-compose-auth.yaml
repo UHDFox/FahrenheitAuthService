@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  authservice:
+    image: fahrenheitauthclient
+    build: ./  
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+      - ConnectionStrings__Psql=Host=postgres;Port=5432;Username=postgres;Password=12345678;Database=FahrenheitAuth
+    networks:
+      - fahrenheit_network
+    volumes:
+      - ./logs:/app/logs
+    ports: 
+      - "5001:5001"
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: FahrenheitAuth
+      PGDATA: /var/lib/postgresql/data/pgdata  
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - fahrenheit_network
+    ports: 
+      - "5433:5432"
+
+networks:
+  fahrenheit_network:
+    external: true
+
+volumes:
+  db_data:
+    driver: local

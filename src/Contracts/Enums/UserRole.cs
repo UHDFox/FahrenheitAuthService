@@ -1,4 +1,4 @@
-﻿namespace Domain.Enums;
+﻿namespace Contracts.Enums;
 
 public enum UserRole : byte
 {

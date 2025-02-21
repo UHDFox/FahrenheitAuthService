@@ -1,12 +1,9 @@
 using System.Net.Http.Json;
-using Domain.Entities.Users;
+using Contracts.Contracts.CommonResponses;
+using Contracts.Contracts.User;
 using FahrenheitAuthService.Client.Options;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Repository.User;
-using Web.Contracts.CommonResponses;
-using Web.Contracts.User;
 
 namespace FahrenheitAuthService.Client.Implemetations;
 
@@ -99,12 +96,12 @@ public class AuthClient : IAuthClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "{Operation} failed due to HTTP error", operation);
+            _logger.LogError(ex.Message, "{Operation} failed due to HTTP error", operation);
             throw;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "{Operation} failed due to unexpected error", operation);
+            _logger.LogError(ex.Message, "{Operation} failed due to unexpected error", operation);
             throw;
         }
     }

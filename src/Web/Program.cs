@@ -1,4 +1,5 @@
 using Business.Infrastructure;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.OpenApi.Models;
 using Repository.Infrastructure;
 using Serilog;
@@ -54,10 +55,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseCors("SomePolicy");
-app.UseStaticFiles();
-
+app.TestDbConnection();
+app.ApplyMigrations();
+app.UseCors("AuthCORSPolicy");
+app.UseMiddleware<LoggingMiddleware>();
 app.UseRouting();
 
 app.UseAuthentication();
