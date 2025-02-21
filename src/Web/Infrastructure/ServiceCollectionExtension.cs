@@ -20,6 +20,27 @@ public static class ServiceCollectionExtension
         });
     }
 
+    public static void TestDbConnection(this IHost app)
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<FahrenheitAuthDbContext>();
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    
+            try
+            {
+                logger.LogInformation("Testing database connection...");
+                dbContext.Database.OpenConnection();
+                dbContext.Database.CloseConnection();
+                logger.LogInformation("✅ Successfully connected to the database!");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message, "Failed to connect to the database.");
+            }
+        }
+    }
+
     public static void ConfigureStaticFilesUpload(this IApplicationBuilder app)
     {
         var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
@@ -37,11 +58,12 @@ public static class ServiceCollectionExtension
     {
         services.AddCors(options =>
         {
-            options.AddPolicy("SomePolicy", policyBuilder =>
+            options.AddPolicy("AuthCORSPolicy", policy =>
             {
-                policyBuilder.AllowAnyHeader();
-                policyBuilder.AllowAnyMethod();
-                policyBuilder.AllowAnyOrigin();
+                policy.WithOrigins("http://localhost:7045", "http://localhost:5000")
+                    .AllowCredentials()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
             });
         });
     }
@@ -55,23 +77,28 @@ public static class ServiceCollectionExtension
             .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Warning)
             .WriteTo.Async(a => a.Console(
                 outputTemplate: "{Timestamp:HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}"))
-            .WriteTo.Async(a => a.File("/app/logs/log.txt", rollingInterval: RollingInterval.Day))
+            .WriteTo.Async(a => a.File("/app/logs/authlog.txt", rollingInterval: RollingInterval.Day))
             .CreateLogger();
 
         services.AddLogging(logging =>
         {
             logging.AddSerilog();
-
-            logging.AddFilter("Microsoft.AspNetCore", LogLevel.Warning);
-            logging.AddFilter("Microsoft.AspNetCore.Hosting", LogLevel.Warning);
-            logging.AddFilter("Microsoft.AspNetCore.DataProtection",
-                LogLevel.Error); // Suppress data protection warnings
-            logging.AddFilter("Microsoft.AspNetCore.Diagnostics", LogLevel.Warning);
-            logging.AddFilter("Microsoft.AspNetCore.Routing", LogLevel.Warning);
-            logging.AddFilter("Microsoft.AspNetCore.Mvc", LogLevel.Warning);
-
-            logging.AddFilter("Microsoft.EntityFrameworkCore", LogLevel.Warning);
             logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
         });
+    }
+    public static void ApplyMigrations(this IHost host)
+    {
+        using var scope = host.Services.CreateScope();
+        var services = scope.ServiceProvider;
+        try
+        {
+            var dbContext = services.GetRequiredService<FahrenheitAuthDbContext>();
+            dbContext.Database.Migrate(); // Applies any pending migrations
+            Log.Information("Database migration applied successfully.");
+        }
+        catch (Exception ex)
+        {
+            Log.Error($"An error occurred while applying the database migration: {ex.Message}");
+        }
     }
 }

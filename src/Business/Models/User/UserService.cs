@@ -67,9 +67,11 @@ internal sealed class UserService : IUserService
             SameSite = SameSiteMode.Strict,
             Expires = DateTime.UtcNow.AddMinutes(20)
         };
+        
+        _logger.LogInformation($"User with email {model.Email} logged in successfully");
 
         context.Response.Cookies.Append("some-cookie", token, cookieOptions);
-
+        
         return token;
     }
 
@@ -84,7 +86,11 @@ internal sealed class UserService : IUserService
 
     public async Task<IReadOnlyCollection<UserModel>> GetListAsync(int offset, int limit)
     {
-        return _mapper.Map<IReadOnlyCollection<UserModel>>(await _repository.GetAllAsync(offset, limit));
+        
+        var result = _mapper.Map<IReadOnlyCollection<UserModel>>(await _repository.GetAllAsync(offset, limit));
+        _logger.LogInformation($"Retrieved list of {nameof(UserModel)} with offset: {offset} and limit: {limit}");
+        
+        return result;
     }
 
     public async Task<UserModel> GetByIdAsync(Guid id)

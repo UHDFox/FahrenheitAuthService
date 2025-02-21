@@ -96,12 +96,12 @@ public class AuthClient : IAuthClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "{Operation} failed due to HTTP error", operation);
+            _logger.LogError(ex.Message, "{Operation} failed due to HTTP error", operation);
             throw;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "{Operation} failed due to unexpected error", operation);
+            _logger.LogError(ex.Message, "{Operation} failed due to unexpected error", operation);
             throw;
         }
     }
