@@ -62,6 +62,7 @@ RUN dotnet clean /app/Web/Web.csproj -c Release
 RUN dotnet clean /app/Business/Business.csproj -c Release
 RUN dotnet clean /app/Domain/Domain.csproj -c Release
 RUN dotnet clean /app/Repository/Repository.csproj -c Release
+RUN dotnet clean /app/Contracts/Contracts.csproj -c Release
 
 # Собираем и публикуем веб-приложение
 RUN dotnet publish /app/Web/Web.csproj -c Release -o /Release

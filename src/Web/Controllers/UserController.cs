@@ -57,7 +57,7 @@ public sealed class UserController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error in GetListAsync");
+            _logger.LogError("Error in GetListAsync: {Message}", ex.Message);
             return StatusCode(500, "An error occurred while processing the request.");
         }
     }
