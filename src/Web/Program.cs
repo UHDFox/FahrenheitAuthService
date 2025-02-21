@@ -58,7 +58,6 @@ if (app.Environment.IsDevelopment())
 app.TestDbConnection();
 app.ApplyMigrations();
 app.UseCors("AuthCORSPolicy");
-app.UseStaticFiles();
 app.UseMiddleware<LoggingMiddleware>();
 app.UseRouting();
 

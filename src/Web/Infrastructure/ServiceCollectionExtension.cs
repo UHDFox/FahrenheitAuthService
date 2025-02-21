@@ -41,18 +41,6 @@ public static class ServiceCollectionExtension
         }
     }
 
-    public static void ConfigureStaticFilesUpload(this IApplicationBuilder app)
-    {
-        var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
-
-        if (!Directory.Exists(uploadsFolderPath)) Directory.CreateDirectory(uploadsFolderPath);
-
-        app.UseStaticFiles(new StaticFileOptions
-        {
-            FileProvider = new PhysicalFileProvider(uploadsFolderPath),
-            RequestPath = "/uploads"
-        });
-    }
 
     public static void ConfigureCORSPolicy(this IServiceCollection services)
     {
@@ -83,7 +71,8 @@ public static class ServiceCollectionExtension
         services.AddLogging(logging =>
         {
             logging.AddSerilog();
-            logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
+            logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Error);
+            logging.SetMinimumLevel(LogLevel.Information);
         });
     }
     public static void ApplyMigrations(this IHost host)
