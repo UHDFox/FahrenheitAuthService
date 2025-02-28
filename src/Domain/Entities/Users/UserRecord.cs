@@ -1,4 +1,4 @@
-using Contracts.Enums;
+using FahrenheitAuthService.Contracts.Enums;
 
 namespace Domain.Entities.Users;
 

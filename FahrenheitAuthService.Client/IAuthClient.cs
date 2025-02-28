@@ -1,6 +1,6 @@
 
-using Contracts.Contracts.CommonResponses;
-using Contracts.Contracts.User;
+using FahrenheitAuthService.Contracts.Contracts.CommonResponses;
+using FahrenheitAuthService.Contracts.Contracts.User;
 
 namespace FahrenheitAuthService.Client;
 

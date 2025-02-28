@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "src\Repositor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FahrenheitAuthService.Client", "FahrenheitAuthService.Client\FahrenheitAuthService.Client.csproj", "{A1CDA0AB-3B5C-49C6-8C31-6210672A2E53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\Contracts\Contracts.csproj", "{0995E6D3-44B1-47B5-B493-D47E532E1949}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FahrenheitAuthService.Contracts", "src\FahrenheitAuthService.Contracts\FahrenheitAuthService.Contracts.csproj", "{0995E6D3-44B1-47B5-B493-D47E532E1949}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,8 +1,6 @@
+using FahrenheitAuthService.Contracts.Enums;
 
-
-using Contracts.Enums;
-
-namespace Contracts.Contracts.User;
+namespace FahrenheitAuthService.Contracts.Contracts.User;
 
 public sealed class UpdateUserRequest
 {

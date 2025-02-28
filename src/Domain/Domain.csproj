@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Contracts\Contracts.csproj" />
+      <ProjectReference Include="..\FahrenheitAuthService.Contracts\FahrenheitAuthService.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

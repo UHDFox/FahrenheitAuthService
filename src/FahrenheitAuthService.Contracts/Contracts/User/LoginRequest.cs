@@ -1,4 +1,4 @@
-﻿namespace Contracts.Contracts.User;
+﻿namespace FahrenheitAuthService.Contracts.Contracts.User;
 
 public sealed class LoginRequest
 {

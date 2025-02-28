@@ -1,6 +1,6 @@
 using System.Net.Http.Json;
-using Contracts.Contracts.CommonResponses;
-using Contracts.Contracts.User;
+using FahrenheitAuthService.Contracts.Contracts.CommonResponses;
+using FahrenheitAuthService.Contracts.Contracts.User;
 using FahrenheitAuthService.Client.Options;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

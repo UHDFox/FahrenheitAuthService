@@ -1,7 +1,7 @@
 using AutoMapper;
 using Business.Models.User;
-using Contracts.Contracts.CommonResponses;
-using Contracts.Contracts.User;
+using FahrenheitAuthService.Contracts.Contracts.CommonResponses;
+using FahrenheitAuthService.Contracts.Contracts.User;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

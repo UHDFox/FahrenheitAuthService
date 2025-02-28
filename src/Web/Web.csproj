@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Contracts\Contracts.csproj" />
+        <ProjectReference Include="..\FahrenheitAuthService.Contracts\FahrenheitAuthService.Contracts.csproj" />
         <ProjectReference Include="..\Business\Business.csproj"/>
         <ProjectReference Include="..\Domain\Domain.csproj"/>
     </ItemGroup>
