@@ -1,4 +1,4 @@
-namespace Contracts.Contracts.CommonResponses;
+namespace FahrenheitAuthService.Contracts.Contracts.CommonResponses;
 
 public class UpdatedResponse
 {

@@ -1,7 +1,7 @@
 using AutoMapper;
 using Business.Models.User;
-using Contracts.Enums;
 using Domain.Entities.Users;
+using FahrenheitAuthService.Contracts.Enums;
 
 namespace Business.Infrastructure;
 

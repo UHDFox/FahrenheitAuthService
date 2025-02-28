@@ -1,4 +1,4 @@
-﻿namespace Contracts.Enums;
+﻿namespace FahrenheitAuthService.Contracts.Enums;
 
 public enum UserRole : byte
 {

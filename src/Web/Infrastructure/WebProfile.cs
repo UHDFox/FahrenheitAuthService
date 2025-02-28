@@ -1,7 +1,7 @@
 using AutoMapper;
 using Business.Models.User;
-using Contracts.Contracts.User;
-using Contracts.Enums;
+using FahrenheitAuthService.Contracts.Contracts.User;
+using FahrenheitAuthService.Contracts.Enums;
 
 namespace Web.Infrastructure;
 
@@ -16,7 +16,7 @@ public class WebProfile : Profile
                 src.PhoneNumber,
                 src.Email,
                 src.Password,
-                (Contracts.Enums.UserRole)src.Role));
+                (FahrenheitAuthService.Contracts.Enums.UserRole)src.Role));
 
         CreateMap<CreateUserRequest, UserModel>()
             .ConstructUsing(src => new UserModel(

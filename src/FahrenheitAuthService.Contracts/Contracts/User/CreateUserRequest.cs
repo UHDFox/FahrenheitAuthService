@@ -1,6 +1,6 @@
-using Contracts.Enums;
+using FahrenheitAuthService.Contracts.Enums;
 
-namespace Contracts.Contracts.User;
+namespace FahrenheitAuthService.Contracts.Contracts.User;
 
 public sealed class CreateUserRequest
 {
