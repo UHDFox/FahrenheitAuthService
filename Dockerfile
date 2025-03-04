@@ -7,14 +7,14 @@ WORKDIR /app
 COPY ./FahrenheitAuthService.Client/NuGet.config /app/NuGet.config
 
 # Копируем проекты клиента и его зависимости
-COPY ./src/Contracts/Contracts.csproj /app/Contracts/
+COPY ./src/FahrenheitAuthService.Contracts/FahrenheitAuthService.Contracts.csproj /app/Contracts/
 COPY ./src/Web/Web.csproj /app/Web/
 COPY ./FahrenheitAuthService.Client/FahrenheitAuthService.Client.csproj /app/FahrenheitAuthService.Client/
 COPY ./src/Domain/Domain.csproj /app/Domain/
 COPY ./src/Business/Business.csproj /app/Business/
 COPY ./src/Repository/Repository.csproj /app/Repository/
 
-# Восстанавливаем зависимости клиента (без упаковки)
+# Восстанавливаем зависимости клиента
 RUN dotnet restore /app/FahrenheitAuthService.Client/FahrenheitAuthService.Client.csproj --configfile /app/NuGet.config
 
 # Копируем исходный код
@@ -32,14 +32,7 @@ COPY ./src/Domain/Domain.csproj /app/Domain/
 COPY ./src/Business/Business.csproj /app/Business/
 COPY ./src/Repository/Repository.csproj /app/Repository/
 
-# Добавляем NuGet-источник (если нужно)
-COPY --from=build-client /app/nuget /app/nuget
-RUN dotnet nuget add source /app/nuget --name DockerFahrenheitRepo
-
-# Копируем исходный код
-COPY ./src /app/
-
-# Восстанавливаем зависимости веб-приложения из NuGet
+# Восстанавливаем зависимости веб-приложения
 RUN dotnet restore /app/Web/Web.csproj --configfile /app/NuGet.config
 
 # Очищаем старые сборки
@@ -58,7 +51,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 # Копируем опубликованные файлы веб-приложения
-COPY --from=build-web /Release ./
+COPY --from=build-web /Release ./ 
 
 # Точка входа
 ENTRYPOINT ["dotnet", "Web.dll"]
