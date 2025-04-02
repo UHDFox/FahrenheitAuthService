@@ -15,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\src\FahrenheitAuthService.Contracts\FahrenheitAuthService.Contracts.csproj" />
+        <ProjectReference Include="..\FahrenheitAuthService.Contracts\FahrenheitAuthService.Contracts.csproj" />
     </ItemGroup>
 
     <PropertyGroup>
